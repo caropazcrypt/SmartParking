@@ -1,8 +1,8 @@
-
 package com.example.smartparking
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -23,13 +23,16 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Inicializar Firebase Auth
         auth = FirebaseAuth.getInstance()
 
+        // Vincular vistas de la interfaz
         edtCorreo = findViewById(R.id.edtCorreo)
         edtContrasena = findViewById(R.id.edtContrasena)
         btnIngresar = findViewById(R.id.btnIngresar)
         txtCrearCuenta = findViewById(R.id.txtCrearCuenta)
 
+        // Botón Iniciar Sesión
         btnIngresar.setOnClickListener {
             iniciarSesion()
         }
@@ -39,111 +42,79 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun obtenerCredenciales(): Pair<String, String>? {
-        val correo = edtCorreo.text.toString().trim()
-        val contrasena = edtContrasena.text.toString()
-
-        if (correo.isEmpty()) {
-            edtCorreo.error = "Ingresa tu correo electrónico"
-            return null
-        }
-
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
-            edtCorreo.error = "Ingresa un correo válido"
-            return null
-        }
-
-        if (contrasena.length < 6) {
-            edtContrasena.error =
-                "La contraseña debe tener al menos 6 caracteres"
-            return null
-        }
-
-        return Pair(correo, contrasena)
-    }
-
     private fun iniciarSesion() {
-        val credenciales = obtenerCredenciales() ?: return
+        val correo = edtCorreo.text.toString().trim()
+        val contrasena = edtContrasena.text.toString().trim()
 
-        btnIngresar.isEnabled = false
-
-        auth.signInWithEmailAndPassword(
-            credenciales.first,
-            credenciales.second
-        ).addOnCompleteListener(this) { tarea ->
-
-            btnIngresar.isEnabled = true
-
-            if (tarea.isSuccessful) {
-                Toast.makeText(
-                    this,
-                    "Inicio de sesión exitoso",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                abrirSmartParking()
-            } else {
-                Toast.makeText(
-                    this,
-                    "No se pudo iniciar sesión. Revisa tus credenciales.",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+        if (correo.isEmpty() || contrasena.isEmpty()) {
+            Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show()
+            return
         }
-    }
 
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            Toast.makeText(this, "Formato de correo no válido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Autenticación en la nube mediante canal seguro
+        auth.signInWithEmailAndPassword(correo, contrasena)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Inicio de sesión exitoso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ModoActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Error de acceso: Credenciales inválidas o no autorizadas",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+    }
 
     private fun registrarUsuario() {
-        val credenciales = obtenerCredenciales() ?: return
+        val correo = edtCorreo.text.toString().trim()
+        val contrasena = edtContrasena.text.toString().trim()
 
-        btnIngresar.isEnabled = false
-        txtCrearCuenta.isEnabled = false
-
-        auth.createUserWithEmailAndPassword(
-            credenciales.first,
-            credenciales.second
-        ).addOnCompleteListener(this) { tarea ->
-
-            btnIngresar.isEnabled = true
-            txtCrearCuenta.isEnabled = true
-
-            if (tarea.isSuccessful) {
-
-                // Firebase inicia sesión automáticamente al registrar.
-                // La cerramos para exigir un inicio de sesión manual.
-                auth.signOut()
-
-                // Mantener el correo para facilitar el ingreso.
-                edtCorreo.setText(credenciales.first)
-
-                // Limpiar la contraseña por seguridad.
-                edtContrasena.text.clear()
-
-                Toast.makeText(
-                    this,
-                    "Cuenta creada exitosamente.",
-                    Toast.LENGTH_LONG
-                ).show()
-
-                edtContrasena.requestFocus()
-
-            } else {
-                Toast.makeText(
-                    this,
-                    "No se pudo crear la cuenta: " +
-                            (tarea.exception?.localizedMessage
-                                ?: "Error desconocido"),
-                    Toast.LENGTH_LONG
-                ).show()
-            }
+        if (correo.isEmpty() || contrasena.isEmpty()) {
+            Toast.makeText(this, "Ingresa un correo y contraseña para registrarte", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            Toast.makeText(this, "Ingresa un formato de correo válido", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!esContrasenaRobusta(contrasena)) {
+            Toast.makeText(
+                this,
+                "Seguridad ISO 27400: La clave requiere al menos 8 caracteres, mayúscula, minúscula, número y un símbolo especial (@#$%^&+=!._)",
+                Toast.LENGTH_LONG
+            ).show()
+            return
+        }
+        auth.createUserWithEmailAndPassword(correo, contrasena)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(this, "Usuario registrado con éxito en Firebase", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, ModoActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Error al registrar: ${task.exception?.localizedMessage}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
     }
 
-
-
-    private fun abrirSmartParking() {
-        val intent = Intent(this, ModoActivity::class.java)
-        startActivity(intent)
-        finish()
+    private fun esContrasenaRobusta(password: String): Boolean {
+        val passwordRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!._])(?=\\S+$).{8,}$"
+        return password.matches(passwordRegex.toRegex())
     }
 }

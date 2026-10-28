@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/sp_background">
+    android:background="#F8FAFC">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="16dp">
 
         <!-- ENCABEZADO -->
         <LinearLayout
@@ -19,199 +19,213 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="14dp"
+            android:padding="20dp"
             android:background="@drawable/bg_header"
-            android:layout_marginBottom="8dp">
+            android:elevation="3dp"
+            android:layout_marginBottom="12dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SMARTPARKING"
-                android:textColor="@color/sp_white"
-                android:textSize="23sp"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:letterSpacing="0.05"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sistema de estacionamiento inteligente"
-                android:textColor="@color/sp_white"
-                android:textSize="12sp"
-                android:gravity="center" />
-
+                android:text="Consola de Control y Simulación IoT"
+                android:textColor="#EDE7F6"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginTop="3dp" />
         </LinearLayout>
 
-        <!-- ESTADO DE CONEXIÓN -->
+        <!-- BADGE CONEXIÓN -->
         <TextView
             android:id="@+id/txtConexion"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="● Modo simulación | IoT sin conectar"
-            android:textColor="@color/sp_gray"
+            android:textColor="#5E35B1"
             android:textSize="12sp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:layout_marginBottom="8dp" />
-
-        <!-- DISPONIBILIDAD -->
-        <TextView
-            android:id="@+id/txtEstado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ESTACIONAMIENTO DISPONIBLE"
-            android:textColor="@color/sp_white"
-            android:textSize="15sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:padding="12dp"
-            android:background="@color/sp_green"
-            android:layout_marginBottom="10dp" />
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="12dp" />
 
-        <!-- SIMULACIÓN DE SENSORES -->
-        <LinearLayout
+        <!-- BANNER DISPONIBILIDAD -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="10dp">
+            app:cardCornerRadius="14dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="0dp"
+            android:layout_marginBottom="16dp">
 
             <TextView
+                android:id="@+id/txtEstado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SIMULACIÓN DE SENSORES"
-                android:textColor="@color/sp_orange"
+                android:text="ESTACIONAMIENTO DISPONIBLE"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="5dp" />
+                android:gravity="center"
+                android:paddingVertical="14dp"
+                android:background="#16A34A" />
+        </com.google.android.material.card.MaterialCardView>
 
-            <Switch
-                android:id="@+id/switchEntrada"
+        <!-- SIMULACIÓN DE SENSORES -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E2E8F0"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Vehículo en la entrada"
-                android:textColor="@color/sp_dark"
-                android:minHeight="42dp"
-                android:padding="5dp" />
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <Switch
-                android:id="@+id/switchEstacionamiento"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vehículo estacionado"
-                android:textColor="@color/sp_dark"
-                android:minHeight="42dp"
-                android:padding="5dp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIMULACIÓN DE SENSORES"
+                    android:textColor="#1F2937"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:letterSpacing="0.04"
+                    android:layout_marginBottom="8dp" />
 
-            <Switch
-                android:id="@+id/switchNoche"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Modo noche"
-                android:textColor="@color/sp_dark"
-                android:minHeight="42dp"
-                android:padding="5dp" />
+                <Switch
+                    android:id="@+id/switchEntrada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vehículo en la entrada"
+                    android:textColor="#374151"
+                    android:minHeight="48dp" />
 
-        </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F1F5F9"
+                    android:layout_marginVertical="4dp" />
 
-        <!-- VISUALIZACIÓN DEL SISTEMA -->
+                <Switch
+                    android:id="@+id/switchEstacionamiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vehículo estacionado"
+                    android:textColor="#374151"
+                    android:minHeight="48dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#F1F5F9"
+                    android:layout_marginVertical="4dp" />
+
+                <Switch
+                    android:id="@+id/switchNoche"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Modo noche (LDR)"
+                    android:textColor="#374151"
+                    android:minHeight="48dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CONTROL DE ACCESO (BARRERA Y SEMÁFORO) -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CONTROL DE ACCESO"
-            android:textColor="@color/sp_dark"
-            android:textSize="15sp"
+            android:textColor="#1F2937"
+            android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:letterSpacing="0.03"
+            android:layout_marginBottom="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="top"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="16dp">
 
-            <!-- TARJETA DE LA BARRERA -->
+            <!-- TARJETA BARRERA CON PIVOTE DE ROTACIÓN -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1.3"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:background="@drawable/bg_card"
-                android:layout_marginEnd="5dp">
+                android:layout_marginEnd="6dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BARRERA"
-                    android:textColor="@color/sp_dark"
-                    android:textSize="13sp"
+                    android:textColor="#1F2937"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="6dp" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="175dp"
-                    android:background="#E5E7EB"
+                    android:layout_height="160dp"
+                    android:background="#F1F5F9"
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
-                    <!-- SUELO -->
+                    <!-- Asfalto -->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="36dp"
                         android:layout_gravity="bottom"
                         android:background="#374151" />
 
-                    <!-- BASE -->
+                    <!-- Poste -->
                     <View
-                        android:layout_width="24dp"
-                        android:layout_height="55dp"
+                        android:layout_width="22dp"
+                        android:layout_height="54dp"
                         android:layout_gravity="bottom|start"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:background="@color/sp_dark" />
+                        android:layout_marginStart="14dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#1F2937" />
 
-                    <!-- BRAZO ANIMADO -->
+                    <!-- Brazo móvil -->
                     <LinearLayout
                         android:id="@+id/brazoBarrera"
-                        android:layout_width="140dp"
-                        android:layout_height="12dp"
+                        android:layout_width="130dp"
+                        android:layout_height="10dp"
                         android:layout_gravity="bottom|start"
                         android:layout_marginStart="24dp"
-                        android:layout_marginBottom="55dp"
+                        android:layout_marginBottom="44dp"
                         android:orientation="horizontal"
-                        android:background="@color/sp_white">
+                        android:background="#FFFFFF"
+                        android:transformPivotX="0dp"
+                        android:transformPivotY="5dp">
 
-                        <View
-                            android:layout_width="28dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/sp_red" />
-
-                        <View
-                            android:layout_width="28dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/sp_white" />
-
-                        <View
-                            android:layout_width="28dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/sp_red" />
-
-                        <View
-                            android:layout_width="28dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/sp_white" />
-
-                        <View
-                            android:layout_width="28dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/sp_red" />
-
+                        <View android:layout_width="26dp" android:layout_height="match_parent" android:background="#DC2626" />
+                        <View android:layout_width="26dp" android:layout_height="match_parent" android:background="#FFFFFF" />
+                        <View android:layout_width="26dp" android:layout_height="match_parent" android:background="#DC2626" />
+                        <View android:layout_width="26dp" android:layout_height="match_parent" android:background="#FFFFFF" />
+                        <View android:layout_width="26dp" android:layout_height="match_parent" android:background="#DC2626" />
                     </LinearLayout>
-
                 </FrameLayout>
 
                 <TextView
@@ -219,61 +233,59 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Barrera cerrada"
-                    android:textColor="@color/sp_gray"
+                    android:textColor="#6B7280"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="8dp" />
-
             </LinearLayout>
 
-            <!-- TARJETA DEL SEMÁFORO -->
+            <!-- TARJETA SEMÁFORO -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="8dp"
+                android:padding="10dp"
                 android:background="@drawable/bg_card"
-                android:layout_marginStart="5dp">
+                android:layout_marginStart="6dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="SEMÁFORO"
-                    android:textColor="@color/sp_dark"
-                    android:textSize="13sp"
+                    android:textColor="#1F2937"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="6dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="175dp"
+                    android:layout_height="160dp"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:padding="9dp"
+                    android:padding="8dp"
                     android:background="@drawable/bg_semaforo">
 
                     <View
                         android:id="@+id/luzRoja"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
                         android:background="@drawable/bg_luz_semaforo"
-                        android:layout_marginBottom="9dp" />
+                        android:layout_marginBottom="8dp" />
 
                     <View
                         android:id="@+id/luzAmarilla"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
                         android:background="@drawable/bg_luz_semaforo"
-                        android:layout_marginBottom="9dp" />
+                        android:layout_marginBottom="8dp" />
 
                     <View
                         android:id="@+id/luzVerde"
-                        android:layout_width="38dp"
-                        android:layout_height="38dp"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
                         android:background="@drawable/bg_luz_semaforo" />
-
                 </LinearLayout>
 
                 <TextView
@@ -281,110 +293,138 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Semáforo: Verde"
-                    android:textColor="@color/sp_gray"
+                    android:textColor="#6B7280"
                     android:textSize="11sp"
                     android:gravity="center"
                     android:layout_marginTop="8dp" />
-
             </LinearLayout>
-
         </LinearLayout>
 
-        <!-- MONITOREO DE SENSORES -->
+        <!-- MONITOREO DEL SISTEMA -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MONITOREO DEL SISTEMA"
-            android:textColor="@color/sp_dark"
-            android:textSize="15sp"
+            android:textColor="#1F2937"
+            android:textSize="14sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            android:letterSpacing="0.03"
+            android:layout_marginBottom="10dp" />
 
-        <TextView
-            android:id="@+id/txtEntrada"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sensor entrada: Sin vehículo"
-            android:textColor="@color/sp_dark"
-            android:textSize="14sp"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="6dp" />
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp">
 
-        <TextView
-            android:id="@+id/txtEstacionamiento"
+            <TextView
+                android:id="@+id/txtEntrada"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Sensor entrada:\nSin vehículo"
+                android:textColor="#374151"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_card" />
+
+            <TextView
+                android:id="@+id/txtEstacionamiento"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Sensor plaza:\nLibre"
+                android:textColor="#374151"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_card" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sensor plaza: Libre"
-            android:textColor="@color/sp_dark"
-            android:textSize="14sp"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="6dp" />
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginBottom="8dp">
 
-        <TextView
-            android:id="@+id/txtBarrera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Barrera: Cerrada (0°)"
-            android:textColor="@color/sp_dark"
-            android:textSize="14sp"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="6dp" />
+            <TextView
+                android:id="@+id/txtBarrera"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Barrera:\nCerrada (0°)"
+                android:textColor="#374151"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_card" />
 
-        <TextView
-            android:id="@+id/txtLuz"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Luminosidad: Día"
-            android:textColor="@color/sp_dark"
-            android:textSize="14sp"
-            android:padding="12dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="6dp" />
+            <TextView
+                android:id="@+id/txtLuz"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Luminosidad:\nDía"
+                android:textColor="#374151"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:padding="12dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_card" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtIluminacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LED entrada: Apagado"
-            android:textColor="@color/sp_dark"
-            android:textSize="14sp"
+            android:textColor="#374151"
+            android:textSize="12sp"
+            android:gravity="center"
             android:padding="12dp"
             android:background="@drawable/bg_card"
+            android:layout_marginBottom="16dp" />
+
+        <!-- BOTONES -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnReiniciar"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="REINICIAR SIMULACIÓN"
+            android:textColor="#5E35B1"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:strokeColor="#5E35B1"
+            app:strokeWidth="1.2dp"
             android:layout_marginBottom="10dp" />
 
-        <!-- REINICIAR -->
-        <Button
-            android:id="@+id/btnReiniciar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="REINICIAR SIMULACIÓN"
-            android:layout_marginBottom="12dp" />
-
-
-        <!-- CERRAR SESIÓN -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCerrarSesion"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="CERRAR SESIÓN"
-            android:backgroundTint="@color/sp_dark"
-            android:textColor="@color/sp_white"
+            android:textColor="#FFFFFF"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            android:backgroundTint="#5E35B1"
             android:layout_marginBottom="12dp" />
 
-
-        <!-- PIE DE PÁGINA -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SmartParking | Prototipo IoT"
-            android:textColor="@color/sp_gray"
+            android:textColor="#9CA3AF"
             android:textSize="11sp"
             android:gravity="center"
-            android:padding="8dp" />
-
+            android:padding="6dp" />
     </LinearLayout>
-
 </ScrollView>
