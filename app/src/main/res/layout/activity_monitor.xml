@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/sp_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ENCABEZADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="22dp"
+            android:background="@drawable/bg_header"
+            android:layout_marginBottom="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMARTPARKING"
+                android:textColor="@color/sp_white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monitor de estacionamiento"
+                android:textColor="@color/sp_white"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp" />
+
+        </LinearLayout>
+
+        <!-- CONEXIÓN FIREBASE -->
+        <TextView
+            android:id="@+id/txtConexionMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="● Esperando conexión con Firebase..."
+            android:textColor="@color/sp_gray"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:padding="12dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="14dp" />
+
+        <!-- ESTADO PRINCIPAL -->
+        <TextView
+            android:id="@+id/txtEstadoMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ESPERANDO DATOS"
+            android:textColor="@color/sp_white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="20dp"
+            android:background="@color/sp_gray"
+            android:layout_marginBottom="18dp" />
+
+        <!-- TÍTULO -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ESTADO EN TIEMPO REAL"
+            android:textColor="@color/sp_dark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
+
+        <!-- SENSOR ENTRADA -->
+        <TextView
+            android:id="@+id/txtEntradaMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sensor entrada: Esperando datos"
+            android:textColor="@color/sp_dark"
+            android:textSize="15sp"
+            android:padding="18dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="10dp" />
+
+        <!-- SENSOR ESTACIONAMIENTO -->
+        <TextView
+            android:id="@+id/txtPlazaMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sensor plaza: Esperando datos"
+            android:textColor="@color/sp_dark"
+            android:textSize="15sp"
+            android:padding="18dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="10dp" />
+
+        <!-- BARRERA -->
+        <TextView
+            android:id="@+id/txtBarreraMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Barrera: Esperando datos"
+            android:textColor="@color/sp_dark"
+            android:textSize="15sp"
+            android:padding="18dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="10dp" />
+
+        <!-- SEMÁFORO -->
+        <TextView
+            android:id="@+id/txtSemaforoMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Semáforo: Esperando datos"
+            android:textColor="@color/sp_dark"
+            android:textSize="15sp"
+            android:padding="18dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="10dp" />
+
+        <!-- LUMINOSIDAD -->
+        <TextView
+            android:id="@+id/txtNocheMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Luminosidad: Esperando datos"
+            android:textColor="@color/sp_dark"
+            android:textSize="15sp"
+            android:padding="18dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="18dp" />
+
+        <!-- INDICADOR DE SEMÁFORO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginBottom="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SEMÁFORO DEL ESTACIONAMIENTO"
+                android:textColor="@color/sp_dark"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="12dp"
+                android:background="@drawable/bg_semaforo">
+
+                <View
+                    android:id="@+id/luzRojaMonitor"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_luz_semaforo"
+                    android:layout_marginBottom="8dp" />
+
+                <View
+                    android:id="@+id/luzAmarillaMonitor"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_luz_semaforo"
+                    android:layout_marginBottom="8dp" />
+
+                <View
+                    android:id="@+id/luzVerdeMonitor"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/bg_luz_semaforo" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- CERRAR SESIÓN -->
+        <Button
+            android:id="@+id/btnCerrarSesionMonitor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CERRAR SESIÓN"
+            android:backgroundTint="@color/sp_dark"
+            android:textColor="@color/sp_white"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SmartParking | Monitoreo remoto"
+            android:textColor="@color/sp_gray"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</ScrollView>

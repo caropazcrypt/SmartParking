@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/sp_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <!-- ENCABEZADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="26dp"
+            android:background="@drawable/bg_header"
+            android:layout_marginBottom="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SMARTPARKING"
+                android:textColor="@color/sp_white"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sistema de estacionamiento inteligente"
+                android:textColor="@color/sp_white"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginTop="6dp" />
+
+        </LinearLayout>
+
+        <!-- SELECCIÓN DE MODO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:background="@drawable/bg_card">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Selecciona un modo"
+                android:textColor="@color/sp_dark"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="¿Cómo deseas utilizar SmartParking?"
+                android:textColor="@color/sp_gray"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <!-- MODO CONTROLADOR -->
+            <Button
+                android:id="@+id/btnControlador"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="MODO CONTROLADOR"
+                android:textColor="@color/sp_white"
+                android:backgroundTint="@color/sp_orange"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Controla los sensores, la barrera y el semáforo."
+                android:textColor="@color/sp_gray"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginBottom="26dp" />
+
+            <!-- MODO MONITOR -->
+            <Button
+                android:id="@+id/btnMonitor"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="MODO MONITOR"
+                android:textColor="@color/sp_white"
+                android:backgroundTint="@color/sp_dark"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Visualiza los estados del estacionamiento en tiempo real."
+                android:textColor="@color/sp_gray"
+                android:textSize="13sp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <!-- CERRAR SESIÓN -->
+        <Button
+            android:id="@+id/btnCerrarSesionModo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar sesión"
+            android:textColor="@color/sp_dark"
+            android:backgroundTint="@color/sp_white"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SmartParking | Selección de dispositivo"
+            android:textColor="@color/sp_gray"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>

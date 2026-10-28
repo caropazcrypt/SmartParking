@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sp_orange">#F97316</color>
+    <color name="sp_dark">#111827</color>
+    <color name="sp_background">#F3F4F6</color>
+    <color name="sp_white">#FFFFFF</color>
+    <color name="sp_green">#16A34A</color>
+    <color name="sp_red">#DC2626</color>
+    <color name="sp_yellow">#F59E0B</color>
+    <color name="sp_gray">#6B7280</color>
+</resources>
