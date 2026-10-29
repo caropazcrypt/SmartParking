@@ -43,21 +43,6 @@
                 android:layout_marginTop="3dp" />
         </LinearLayout>
 
-        <!-- BADGE CONEXIÓN -->
-        <TextView
-            android:id="@+id/txtConexion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="● Modo simulación | IoT sin conectar"
-            android:textColor="#5E35B1"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="6dp"
-            android:background="@drawable/bg_card"
-            android:layout_marginBottom="12dp" />
 
         <!-- BANNER DISPONIBILIDAD -->
         <com.google.android.material.card.MaterialCardView
